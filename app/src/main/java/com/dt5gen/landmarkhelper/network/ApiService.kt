@@ -19,7 +19,7 @@ interface ApiService {
 }
 
 object RetrofitClient {
-    private const val BASE_URL = "http://192.168.0.243:8080/api" // Заменить на актуальный URL
+    private const val BASE_URL = "http://192.168.0.243:8080/api/" // Заменить на актуальный URL
 
     val apiService: ApiService by lazy {
         Retrofit.Builder()
