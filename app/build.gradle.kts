@@ -62,6 +62,7 @@ dependencies {
     implementation(libs.androidx.material3)
     testImplementation(libs.junit)
     kapt ("androidx.room:room-compiler:2.6.1")
+    implementation (libs.androidx.lifecycle.viewmodel.compose)
     implementation (libs.retrofit)
     implementation (libs.converter.gson)
     implementation (libs.androidx.room.runtime)
