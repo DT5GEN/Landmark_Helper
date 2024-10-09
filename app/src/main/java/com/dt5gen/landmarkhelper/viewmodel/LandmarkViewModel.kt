@@ -10,16 +10,22 @@ import kotlinx.coroutines.flow.StateFlow
 
 class LandmarkViewModel(private val apiService: ApiService) : ViewModel() {
 
+    val isLoading = MutableStateFlow(false)
+    val errorMessage = MutableStateFlow<String?>(null)
     private val _landmarks = MutableStateFlow<List<Landmark>>(emptyList())
     val landmarks: StateFlow<List<Landmark>> = _landmarks
 
     fun fetchLandmarks() {
         viewModelScope.launch {
+            isLoading.value = true
             try {
                 val response = apiService.getLandmarks()
                 _landmarks.value = response
+                errorMessage.value = null
             } catch (e: Exception) {
-                // Обработка ошибки
+                errorMessage.value = e.message
+            } finally {
+                isLoading.value = false
             }
         }
     }
