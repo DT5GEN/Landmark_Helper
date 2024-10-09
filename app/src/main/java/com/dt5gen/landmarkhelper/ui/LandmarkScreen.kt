@@ -1,5 +1,6 @@
 package com.dt5gen.landmarkhelper.ui
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -46,8 +47,10 @@ class LandmarkViewModel(private val apiService: ApiService) : ViewModel() {
             try {
                 val response = apiService.getLandmarks()
                 _landmarks.value = response
+                Log.d("LandmarkViewModel", "Fetched landmarks: $response") // Лог успешного получения данных
             } catch (e: Exception) {
                 _errorMessage.value = "Failed to load landmarks"
+                Log.e("LandmarkViewModel", "Error fetching landmarks", e) // Лог ошибки
             } finally {
                 _isLoading.value = false
             }
@@ -57,7 +60,7 @@ class LandmarkViewModel(private val apiService: ApiService) : ViewModel() {
 
 // Обновим код LandmarkScreen для обработки новых состояний
 @Composable
-fun LandmarkScreen(viewModel: LandmarkViewModel = koinViewModel()) {
+fun LandmarkScreen(viewModel: com.dt5gen.landmarkhelper.ui.LandmarkViewModel = koinViewModel()) {
     val landmarks = viewModel.landmarks.collectAsState()
     val isLoading = viewModel.isLoading.collectAsState()
     val errorMessage = viewModel.errorMessage.collectAsState()
@@ -87,9 +90,10 @@ fun LandmarkScreen(viewModel: LandmarkViewModel = koinViewModel()) {
 
 // Вызов fetchLandmarks() при загрузке экрана
 @Composable
-fun LandmarkScreenContent(viewModel: LandmarkViewModel = koinViewModel()) {
+fun LandmarkScreenContent(viewModel: com.dt5gen.landmarkhelper.ui.LandmarkViewModel = koinViewModel()) {
     LaunchedEffect(Unit) {
         viewModel.fetchLandmarks()
+        Log.d("fetch5", "LandmarkScreenContent: ")
     }
     LandmarkScreen(viewModel)
 }
