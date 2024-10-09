@@ -18,14 +18,14 @@ interface ApiService {
     suspend fun getServices(): List<Services>
 }
 
-object RetrofitClient {
-    private const val BASE_URL = "http://192.168.0.243:8080/api/" // Заменить на актуальный URL
-
-    val apiService: ApiService by lazy {
-        Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(ApiService::class.java)
-    }
-}
+//object RetrofitClient {
+//    private const val BASE_URL = "http://192.168.0.243:8080/api/" // Заменить на актуальный URL
+//
+//    val apiService: ApiService by lazy {
+//        Retrofit.Builder()
+//            .baseUrl(BASE_URL)
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//            .create(ApiService::class.java)
+//    }
+//}

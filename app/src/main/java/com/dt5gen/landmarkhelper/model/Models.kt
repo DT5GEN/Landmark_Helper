@@ -1,10 +1,15 @@
 package com.dt5gen.landmarkhelper.model
 
+import java.util.Date
+
 
 data class Landmark(
     val id: Int,
     val name: String,
+    val  rating : Int,
+    val  creationDate: Date,
     val description: String
+
 )
 
 data class Locality(

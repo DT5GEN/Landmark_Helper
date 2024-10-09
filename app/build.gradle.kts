@@ -69,6 +69,7 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.androidx.room.runtime)
 
+    implementation ("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
     implementation (libs.koin.android)
     implementation (libs.koin.androidx.compose) // Для поддержки Jetpack Compose
 
