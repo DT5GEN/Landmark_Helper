@@ -69,9 +69,10 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.androidx.room.runtime)
 
+    implementation (libs.logging.interceptor)
     implementation (libs.koin.android)
     implementation (libs.koin.androidx.compose) // Для поддержки Jetpack Compose
-
+        //  implementation (libs.koin.androidx.viewmodel)
 
 
 //    androidTestImplementation(libs.androidx.junit)
