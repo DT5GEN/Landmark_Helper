@@ -5,9 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dt5gen.landmarkhelper.model.Landmark
 import com.dt5gen.landmarkhelper.network.ApiService
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 
 class LandmarkViewModel(private val apiService: ApiService) : ViewModel() {
 
@@ -34,19 +34,3 @@ class LandmarkViewModel(private val apiService: ApiService) : ViewModel() {
     }
 }
 
-//fun fetchLandmarks() {
-//    viewModelScope.launch {
-//        _isLoading.value = true
-//        _errorMessage.value = null
-//        try {
-//            val response = apiService.getLandmarks()
-//            _landmarks.value = response
-//            Log.d("LandmarkViewModel", "Fetched landmarks: $response") // Лог успешного получения данных
-//        } catch (e: Exception) {
-//            _errorMessage.value = "Failed to load landmarks"
-//            Log.e("LandmarkViewModel", "Error fetching landmarks", e) // Лог ошибки
-//        } finally {
-//            _isLoading.value = false
-//        }
-//    }
-//}
