@@ -6,10 +6,10 @@ import java.util.Date
 data class Landmark(
     val id: Int,
     val name: String,
-    val  rating : Int,
-    val  creationDate: Date,
-    val description: String
-
+    val rating: Int,
+    val creationDate: Date,
+    val description: String,
+    val type: LandmarkType,  // Новое поле для типа достопримечательности
 )
 
 data class Locality(
