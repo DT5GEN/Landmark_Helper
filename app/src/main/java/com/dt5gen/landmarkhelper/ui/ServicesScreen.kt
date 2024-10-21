@@ -15,13 +15,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.dt5gen.landmarkhelper.model.Services
+import com.dt5gen.landmarkhelper.model.ServicesDTO
 import com.dt5gen.landmarkhelper.viewmodel.ServicesViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ServiceScreen(viewModel: ServicesViewModel = koinViewModel()) {
-    val services = viewModel.services.collectAsState()
+    val services = viewModel.servicesDTO.collectAsState()
 
     Column(
         modifier = Modifier
@@ -39,11 +39,13 @@ fun ServiceScreen(viewModel: ServicesViewModel = koinViewModel()) {
 }
 
 @Composable
-fun ServiceItem(service: Services) {
-    Card(modifier = Modifier.fillMaxWidth().padding(8.dp)) {
+fun ServiceItem(service: ServicesDTO) {
+    Card(modifier = Modifier
+        .fillMaxWidth()
+        .padding(8.dp)) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(text = service.name, style = MaterialTheme.typography.titleLarge)
-            Text(text = service.category)
+            Text(text = service.type.toString())
         }
     }
 }

@@ -3,7 +3,7 @@ package com.dt5gen.landmarkhelper.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dt5gen.landmarkhelper.model.Landmark
+import com.dt5gen.landmarkhelper.model.LandmarkDTO
 import com.dt5gen.landmarkhelper.network.ApiService
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -13,8 +13,8 @@ class LandmarkViewModel(private val apiService: ApiService) : ViewModel() {
 
     val isLoading = MutableStateFlow(false)
     val errorMessage = MutableStateFlow<String?>(null)
-    private val _landmarks = MutableStateFlow<List<Landmark>>(emptyList())
-    val landmarks: StateFlow<List<Landmark>> = _landmarks
+    private val _landmarks = MutableStateFlow<List<LandmarkDTO>>(emptyList())
+    val landmarks: StateFlow<List<LandmarkDTO>> = _landmarks
 
     fun fetchLandmarks() {
         viewModelScope.launch {
