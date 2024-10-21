@@ -20,9 +20,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dt5gen.landmarkhelper.model.Landmark
+import com.dt5gen.landmarkhelper.model.LandmarkDTO
 import com.dt5gen.landmarkhelper.network.ApiService
-import com.dt5gen.landmarkhelper.viewmodel.LandmarkViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -31,8 +30,8 @@ import org.koin.androidx.compose.koinViewModel
 // В LandmarkViewModel добавим состояния загрузки и ошибки
 class LandmarkViewModel(private val apiService: ApiService) : ViewModel() {
 
-    private val _landmarks = MutableStateFlow<List<Landmark>>(emptyList())
-    val landmarks: StateFlow<List<Landmark>> = _landmarks
+    private val _landmarks = MutableStateFlow<List<LandmarkDTO>>(emptyList())
+    val landmarks: StateFlow<List<LandmarkDTO>> = _landmarks
 
     private val _isLoading = MutableStateFlow(false)
     val isLoading: StateFlow<Boolean> = _isLoading
@@ -100,7 +99,7 @@ fun LandmarkScreenContent(viewModel: com.dt5gen.landmarkhelper.ui.LandmarkViewMo
 
 @Composable
 
-fun LandmarkItem(landmark: Landmark) {
+fun LandmarkItem(landmarkDTO: LandmarkDTO) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -108,9 +107,9 @@ fun LandmarkItem(landmark: Landmark) {
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Text(text = landmark.name, style = MaterialTheme.typography.titleMedium)
+            Text(text = landmarkDTO.name, style = MaterialTheme.typography.titleMedium)
             Spacer(modifier = Modifier.height(8.dp))
-            Text(text = landmark.description, style = MaterialTheme.typography.bodyMedium)
+            Text(text = landmarkDTO.description, style = MaterialTheme.typography.bodyMedium)
         }
     }
 }
