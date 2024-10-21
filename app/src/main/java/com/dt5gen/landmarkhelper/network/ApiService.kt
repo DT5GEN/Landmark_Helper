@@ -6,10 +6,10 @@ import com.dt5gen.landmarkhelper.model.Services
 import retrofit2.http.GET
 
 interface ApiService {
-    @GET("landmark")
+    @GET("landmarks")
     suspend fun getLandmarks(): List<Landmark>
 
-    @GET("locality")
+    @GET("localities")
     suspend fun getLocality(): List<Locality>
 
     @GET("services")
